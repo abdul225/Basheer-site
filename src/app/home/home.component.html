@@ -1,0 +1,40 @@
+<app-login *ngIf="this.loginService.showLoginValue" (LoginEvent)= "receiveLogin($event)"></app-login>
+
+<div class="cover-carousel">
+    <ngx-slick-carousel class="carousel1" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+            <img class="cover-image" src="{{ slide.img }}" alt=""  width="100%">
+        </div>
+    </ngx-slick-carousel>
+</div>
+<div class="latest">
+    <h2 class="tray-title"><a class="tray-link" href="#">Latest & Trending</a> </h2>
+    <!-- <button class="btn-next" (click)="next()">next</button> -->
+    <ngx-slick-carousel class="carousel" #slickModal1="slick-carousel" [config]="slideConfig1">
+        <div ngxSlickItem *ngFor="let slide of slides" class="trayslide">
+            <img (click)="playVideo()" src="{{ slide.img }}" alt="" height= "100%" width="100%">
+        </div>
+    </ngx-slick-carousel>
+</div>
+<div class="latest">
+    <h2 class="tray-title"><a class="tray-link" href="#">Popular Shows</a> </h2>
+    <!-- <button class="btn-next" (click)="next()">next</button> -->
+    <ngx-slick-carousel class="carousel" #slickModal1="slick-carousel" [config]="slideConfig1">
+        <div ngxSlickItem *ngFor="let slide of slides" class="trayslide">
+            <img src="{{ slide.img }}" alt="" height="100% " width="100%">
+        </div>
+    </ngx-slick-carousel>
+
+    <!-- <button class="btn-prev" (click)="prev()">prev</button> -->
+</div>
+<div class="latest">
+    <h2 class="tray-title"><a class="tray-link" href="#">Movies Recommended For You</a> </h2>
+    <!-- <button class="btn-next" (click)="next()">next</button> -->
+    <ngx-slick-carousel class="carousel" #slickModal1="slick-carousel" [config]="slideConfig1">
+        <div ngxSlickItem *ngFor="let slide of slides" class="trayslide">
+            <img src="{{ slide.img }}" alt="" height="100% " width="100%">
+        </div>
+    </ngx-slick-carousel>
+
+    <!-- <button class="btn-prev" (click)="prev()">prev</button> -->
+</div>
