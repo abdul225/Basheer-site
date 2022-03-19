@@ -2,7 +2,7 @@
 <div class="cover-carousel">
     <ngx-slick-carousel class="carousel1" #slickModal="slick-carousel" [config]="slideConfig">
         <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-            <img class="cover-image" (click)="playVideo()" src="{{ slide.img }}" alt="../../assets/images/person.jpeg"
+            <img class="cover-image" (click)="playVideo()" src="{{ slide.img }}" alt="assets/images/person.jpeg"
                 width="100%">
         </div>
     </ngx-slick-carousel>

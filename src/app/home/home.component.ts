@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('slickModal1', { static: true })
   slickModal1!: SlickCarouselComponent;
   slides = [
-    { img: "../../assets/images/person.jpeg" },
+    { img: "assets/images/person.jpeg" },
     { img: "https://dummyimage.com/350x150/2a2b7a/fff" },
     { img: "https://dummyimage.com/350x150/1a2b7a/fff" },
     { img: "https://dummyimage.com/350x150/7a2b7a/fff" },
