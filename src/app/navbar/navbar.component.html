@@ -1,14 +1,14 @@
     <nav mat-tab-nav-bar fxLayoutAlign="space-evenly center" class="navbar" >
         <div fxShow="true" fxHide.gt-sm="true">
-            <a href="#" (click)="sidenav.toggle()">  <mat-icon class="hamburger">menu</mat-icon></a>
+            <a (click)="sidenav.toggle()">  <mat-icon class="hamburger">menu</mat-icon></a>
           </div>
           <div fxFlex="60" >
-          <img src="../../assets/images/logo.svg" class="brand-logo" alt="">
-        <a  mat-tab-link class="tab-links"  fxShow="true" fxHide.lt-md="true" *ngFor="let link of links"
-          > {{link}} </a>
+          <img routerLink="/home" src="assets/images/Basheerlogo.png" class="brand-logo" alt="../../assets/images/Basheerlogo.png">
+        <a  mat-tab-link class="tab-links" fxShow="true" fxHide.lt-md="true" *ngFor="let link of links" [routerLink]="link.url" 
+          > {{link.name}} </a>
         </div>
-        <div fxFlex="40" fxLayoutAlign="end center" fxShow="true" fxHide.lt-md="true" class="right-container">
-           <input type="text" class="search-box" placeholder="search">
+        <div fxFlex="40" fxLayoutAlign="end center" fxShow="true" class="right-container">
+           <input type="text"  fxHide.lt-md="true" class="search-box" placeholder="search">
            <button class="sub-btn">subscribe</button>
            <a *ngIf="!loginService.getIsLoggedIn()"  class="login-link" (click)="login()">login</a>
            <a  *ngIf="loginService.getIsLoggedIn()"  class="login-link" (click)="logout()">logout</a>
@@ -18,10 +18,10 @@
     
       <mat-sidenav #sidenav class="sidenav" fxLayout="column">
         <div fxLayout="column">
-          <a (click)="sidenav.toggle()" href="#" mat-button>Close</a>
+          <a (click)="sidenav.toggle()" mat-button>Close</a>
          
         <a href="#" *ngFor="let link of links"
-        mat-button>{{link}} </a>
+        mat-button>{{link.name}} </a>
         </div>
       </mat-sidenav>
 

@@ -9,6 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FormsModule } from '@angular/forms';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
+import {MatDialogModule} from '@angular/material/dialog';
 // Firebase services + enviorment module
 import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire/compat";
@@ -19,21 +21,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { VideoComponent } from './video/video.component';
 import { FooterComponent } from './footer/footer.component';
 import { MarketingComponent } from './marketing/marketing.component';
 import { LoginService } from './login.service';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    LoginComponent,
-    VideoComponent,
     FooterComponent,
-    MarketingComponent
+    MarketingComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +47,10 @@ import { LoginService } from './login.service';
     MatSidenavModule,
     MatButtonModule,
     MatTabsModule,
+    MatDialogModule,
     FlexLayoutModule,
     SlickCarouselModule,
+    CdkAccordionModule,
     BrowserAnimationsModule
   ],
   providers: [LoginService],

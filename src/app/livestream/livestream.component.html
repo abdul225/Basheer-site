@@ -1,0 +1,16 @@
+<div class="live-div">
+    <button (click)="startStream()">start Streaming    
+    </button>
+    <select #select [(ngModel)]="role" >
+    
+        <option value ="subscriber">viewer</option>
+        <option value ="publisher">host</option>
+        </select>
+    
+    
+<div [id]="localCallId" class="local" *ngIf="showLocal" ></div>
+<div [id]="remoteCallId" *ngIf="showRemote" >
+<div *ngFor="let callId of remoteCalls" [id]="callId" class="remote"></div>
+</div>
+<button (click)="leave()">leave</button>
+</div>

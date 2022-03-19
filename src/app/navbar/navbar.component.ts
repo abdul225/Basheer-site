@@ -2,6 +2,8 @@ import { LoginService } from './../login.service';
 
 import { Component,NgZone, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { LoginComponent } from '../login/login.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +14,7 @@ export class NavbarComponent implements OnInit {
   user_data: any;
   isLoggedIn:boolean =false;
   constructor(private afAuth: AngularFireAuth,
-    private ngZone: NgZone,public loginService:LoginService) { }
+    private ngZone: NgZone,public loginService:LoginService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.user_data=JSON.parse(localStorage.getItem('user_data') || 'null');
@@ -21,21 +23,17 @@ export class NavbarComponent implements OnInit {
     }
   }
   links=[
-  "Live Channels", "Videos", "Series", "Audio", "Kids "
+  {name:'Live Channels',url:'/live'},
+   {name:'Videos',url:'/videos'},
+    {name:'Series',url:'/series'},
+     {name:'Audio',url:'/audio'}, 
+     {name:'Kids',url:'/kids'}
   ]
   logout() {
     this.loginService.logout();
-    // return this.afAuth.signOut().then(() => {
-    //   this.ngZone.run(() => {
-    //     //console.log("the app has been logged out");
-    //     localStorage.setItem('verificationId',JSON.stringify(null));
-    //     localStorage.setItem('user_data',JSON.stringify(null));
-    //    // User.isLoggedIn=false;
-    //    this.isLoggedIn= false;
-    //   });
-    // });
   }
   login(){
-    this.loginService.setShowLogin(true);
+    // this.loginService.setShowLogin(true);
+    const dialogRef = this.dialog.open(LoginComponent,{panelClass: ['slide-animation']});
   }
 }

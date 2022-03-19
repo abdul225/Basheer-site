@@ -2,13 +2,15 @@
     width: 95%;
     margin: auto;
   }
+
 .slick-slide .cover-image{
     display: flex;
     height: 300px;
+    border-radius: 20px;
 }
 
-body .slick-prev, 
-body .slick-next {
+.slick-prev, 
+.slick-next {
     height: 45px;
     width: 40px;
     background: grey !important;
@@ -18,7 +20,7 @@ body .slick-next {
     margin-top: 80px;
     padding-left: 10px;
     padding-right: 10px;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;   
 }
 
 .tray-link{
@@ -27,7 +29,7 @@ body .slick-next {
     padding-left: 20px;
 }
 .tray-title{
-    margin-top: 10px;
+    margin-bottom: 0px;
 }
 @media only screen and (min-width: 1024px) {
     .tray-link{
@@ -41,18 +43,39 @@ body .slick-next {
 .cover-carousel{
     margin-bottom: 20px;
 }
-.trayslide{
-    transition: transform .5s;
-    padding: 10px;
-    height: 200px;
+.tray-slide{    
+    padding: 30px 10px;
 }
-.trayslide :hover{
-    -ms-transform: scale(1.25); /* IE 9 */
-  -webkit-transform: scale(1.25); /* Safari 3-8 */
-  transform: scale(1.25);
+.tray-slide :hover{
+    -ms-transform: scale(1.12); /* IE 9 */
+  -webkit-transform: scale(1.12); /* Safari 3-8 */
+  transform: scale(1.12);
   box-shadow: 0px 0px 30px;
 }
 
-.carousel{
-    height: 200px;
+.card-image{
+    border-radius: 15px;
+    transition: transform 500ms;
+    height: 180px;
+
+}
+.card-image :hover{
+    z-index: 99;
+    -ms-transform: scale(1.12); /* IE 9 */
+  -webkit-transform: scale(1.12); /* Safari 3-8 */
+  transform: scale(1.12);
+  box-shadow: 0px 0px 30px;
+}
+
+.get-start-div{
+    margin-top: 20px;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.get-started-button{
+    width: 20%;
+    @media only screen and (max-width: 480px) {
+        width: 35%;
+}
 }

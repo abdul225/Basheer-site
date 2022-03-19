@@ -1,26 +1,41 @@
 <div class="login-container">
+    <div class="container" id="container" fxShow="true" fxHide.lt-md="true">
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1>Welcome to Basheer</h1>
+                    <p>Enter your phone number and start journey with us</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#" class="login-form">
+                <h1>Login</h1>
 
-<div class="container" id="container">
-    <div class="overlay-container">
-		<div class="overlay">   
-			<div class="overlay-panel overlay-right">
-				<h1>Welcome to Basheer</h1>
-				<p>Enter your phone number and start journey with us</p>
-			</div>
-		</div>
-	</div>
-	<div class="form-container sign-in-container">
-		<form action="#">
-			<h1>Login</h1>
-			
-			<span>Please enter your Phone number</span>
-			<input type="text" placeholder="Enter Phone Number" name="input1"  [(ngModel)]="phoneNumber" min="10" max="15"/>
-			<input *ngIf="isOTPVisible"  type="text" name="input2"  [(ngModel)]="otp" placeholder="One time password(OTP)" />
-			<button *ngIf="!isOTPVisible"(click)="getOTP()">Get OTP</button>
-			<button *ngIf="isOTPVisible" (click)="logIn()">Log in</button>
-			<div id="sign-in-button"></div>
-		</form>
-	</div>
-	
-</div>
+                <span>Please enter your Phone number</span>
+                <input type="text" placeholder="Enter Phone Number" name="input1" [(ngModel)]="phoneNumber" min="10"
+                    max="15" />
+                <input *ngIf="isOTPVisible" type="text" name="input2" [(ngModel)]="otp"
+                    placeholder="One time password(OTP)" />
+                <button *ngIf="!isOTPVisible" (click)="getOTP('RecaptchaDiv')">Get OTP</button>
+                <button *ngIf="isOTPVisible" (click)="logIn()">Log in</button>
+                <div id="RecaptchaDiv"></div>
+            </form>
+        </div>
+    </div>
+    <div class="mobile-form-container sign-in-container" fxLayout="column" fxLayoutAlign="space-around center"
+        fxShow="true" fxHide.gt-sm="true">
+        <form action="#">
+            <h1>Welcome to Basheer</h1>
+            <h1>Login</h1>
+            <span>Please enter your Phone number</span>
+            <input type="text" placeholder="Enter Phone Number" name="input1" [(ngModel)]="phoneNumber" min="10"
+                max="15" />
+            <input *ngIf="isOTPVisible" type="text" name="input2" [(ngModel)]="otp"
+                placeholder="One time password(OTP)" />
+            <button *ngIf="!isOTPVisible" (click)="getOTP('RecaptchaDivMob')">Get OTP</button>
+            <button *ngIf="isOTPVisible" (click)="logIn()">Log in</button>
+            <div id="RecaptchaDivMob"></div>
+        </form>
+    </div>
 </div>

@@ -1,0 +1,50 @@
+.example-accordion {
+    display: block;
+    max-width: 500px;
+  }
+  
+  .example-accordion-item {
+    display: block;
+    border-bottom: solid 1px #ccc;
+  }
+  
+  .example-accordion-item + .example-accordion-item {
+    border-top: none;
+  }
+  
+  .example-accordion-item-header {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 400;
+  }
+  
+  .example-accordion-item-description {
+    font-size: 0.85em;
+    color: #fff;
+  }
+  
+  .example-accordion-item-header,
+  .example-accordion-item-body {
+    padding: 16px;
+    color: #fff;
+  }
+  
+  .example-accordion-item-header:hover {
+    cursor: pointer;
+    //background-color: #eee;
+    opacity: 1;
+  }
+  
+
+  .center{
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+  }
+  h2{
+      text-align: center;
+      color: #fff;
+  }

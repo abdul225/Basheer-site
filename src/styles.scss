@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { height: 100%;
+width: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 *{
     margin: 0;
@@ -15,4 +16,37 @@ body{
     width: 100%;
     position: relative;
     font-family: Roboto;
+}
+mat-dialog-container#modal-component {
+    border: 3px solid #262626;
+    border-radius: 11px;
+    background-color: #1a1a1a;
+    background: none;
+}
+.mat-dialog-container{
+    background: none;
+    padding: 0px !important;
+}
+
+.slide-animation{
+    // position: relative;
+    // transform-style: preserve-3d;
+    background: none;
+     transform:  translateY(300%);
+     animation: deal 2s cubic-bezier(.08,.82,.32,1.21) forwards;
+     animation-delay: 400ms;
+    //box-shadow: 0 0 80rem 0.5rem #002244, 0 0rem 10rem 1rem black, 0 0rem 100rem 0rem #004e92;
+    box-shadow: 0 0 80rem 0.5rem #0d61b5, 0 0rem 10rem 1rem black, 0 0rem 100rem 0rem #26679f;
+    border-radius: 10px;
+}
+@keyframes deal {
+    0% {
+        transform: scale(1.2) rotateY(12deg) translateY(100%) rotate(40deg) scaleX(0.5) scaleY(0.55); 
+    }
+    30% {
+        transform: rotateY(-15deg) rotateY(0deg) rotate(-20deg) translateY(-5%) scale(0.8); 
+    }
+    100% { 
+        transform: rotateY(360deg) rotate(0deg); 
+    } 
 }

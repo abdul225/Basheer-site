@@ -4,6 +4,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { MatDialog } from '@angular/material/dialog';
 var config={
   apiKey: "AIzaSyAIrk7d9ItwDfdfHpKQa8ws5AmU1qfOu7Y",
   authDomain: "basheer-fa573.firebaseapp.com",
@@ -20,15 +21,16 @@ export class LoginService {
   isLoggedIn:boolean=false;
   showLoginValue:boolean=false;
   otp!: string;
+  userData:any=JSON.parse(localStorage.getItem('user_data')||'null');
   constructor(private router:Router,private afAuth: AngularFireAuth,
-    private ngZone: NgZone) {
-    if(this.verify!=null && this.verify!='{}'){
-      this.isLoggedIn=true;
+    private ngZone: NgZone, public dialog: MatDialog) {
       
+    if(this.userData !=null){
+      this.isLoggedIn=true;     
     }
-    console.log("contructor of the sevice intialted",this.isLoggedIn);
+    
     firebase.initializeApp(config);
-    console.log("the verification id from the service is ",this.verify);
+    
    }
   getIsLoggedIn():boolean{
     return this.isLoggedIn;
@@ -39,12 +41,12 @@ export class LoginService {
   setShowLogin(value:boolean){
     this.showLoginValue=value;
   }
-  getOTP(number:string){
+  getOTP(number:string,Id:string){
     this.phoneNumber=number;
-    this.reCapthaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button',{size:'invisble'})
+    this.reCapthaVerifier = new firebase.auth.RecaptchaVerifier(Id,{size:'invisble',})
   
       firebase.auth().signInWithPhoneNumber(this.phoneNumber,this.reCapthaVerifier).then((confirmationResult) =>{
-        console.log(confirmationResult);
+        //console.log(confirmationResult);
         localStorage.setItem('verificationId',JSON.stringify(confirmationResult.verificationId));
         this.verify =confirmationResult.verificationId;
       }).catch((error)=>{
@@ -59,19 +61,19 @@ export class LoginService {
     this.otp=otpValue;
     var credential = firebase.auth.PhoneAuthProvider.credential(this.verify,this.otp);
     firebase.auth().signInWithCredential(credential).then((response)=>{
-      console.log(response);
-      console.log("logged in successfully");
+      //console.log(response);
+      //console.log("logged in successfully");
       localStorage.setItem('user_data',JSON.stringify(response));
-     // this.userData=localStorage.getItem('user_data') || "";
+      this.userData=localStorage.getItem('user_data') || "";
      // console.log("this userdata from the local storage is ",this.userData);
       //console.log("the loggin is logged in value is",User.isLoggedIn);
       //this.LoginEvent.emit(this.loggedin);
       this.isLoggedIn=true;
-      this.showLoginValue=false;
-      this.router.navigate(['video']);
+      this.dialog.closeAll();
+      this.router.navigate(['videos']);
     }).catch((error)=>{
       alert(error.message);
-       console.log("error msg is ",error.meassage);
+       //console.log("error msg is ",error.meassage);
      })
   }
   logout() {
@@ -82,6 +84,7 @@ export class LoginService {
         localStorage.setItem('user_data',JSON.stringify(null));
        // User.isLoggedIn=false;
        this.isLoggedIn= false;
+       this.router.navigate(['']);
       });
     });
   }
