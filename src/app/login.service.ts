@@ -1,10 +1,12 @@
-import { Router } from '@angular/router';
+import { Router,CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Injectable, NgZone } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { LoginComponent } from './login/login.component';
 var config={
   apiKey: "AIzaSyAIrk7d9ItwDfdfHpKQa8ws5AmU1qfOu7Y",
   authDomain: "basheer-fa573.firebaseapp.com",
@@ -14,7 +16,7 @@ var config={
   appId: "1:972779189740:web:f681146633f9f1bea4bcc9"
 }
 @Injectable()
-export class LoginService {
+export class LoginService implements CanActivate{
   verify: any=JSON.parse(localStorage.getItem('verificationId') || '{}');
   reCapthaVerifier: any;
   phoneNumber: any;  
@@ -32,6 +34,15 @@ export class LoginService {
     firebase.initializeApp(config);
     
    }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+      if(this.isLoggedIn){
+        return true;
+      }
+      else{
+        const dialogRef = this.dialog.open(LoginComponent,{panelClass: ['slide-animation']});
+        return false;
+      }
+  }
   getIsLoggedIn():boolean{
     return this.isLoggedIn;
   }

@@ -21,7 +21,7 @@
           <a (click)="sidenav.toggle()" mat-button>Close</a>
          
         <a href="#" *ngFor="let link of links"
-        mat-button>{{link.name}} </a>
+        mat-button  [routerLink]="link.url" >{{link.name}} </a>
         </div>
       </mat-sidenav>
 
